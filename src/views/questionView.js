@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { APIs, getRandomApi } from "../utils/dataUtils";
 import {
     StyledHeading,
     StyledHeading2,
     StyledLink,
     StyledList,
-    StyledListItem
+    StyledListItem,
+    StyledNextButton
 } from "../styles";
+import ScoreView from "./scoreView";
+import {useGameDispatch, REDUCER_TYPES, useGameState} from "../context/gameContext";
 
 const StyledQuestion = styled.div`
     display: flex;
@@ -16,6 +18,9 @@ const StyledQuestion = styled.div`
     height: 100vh;
     width: 100vw;
     align-items: center;
+    max-width: 100vw;
+    padding-left: 5px;
+    padding-right: ;: 5px;
 `;
 
 const StyledRules = styled.span`
@@ -27,21 +32,21 @@ const StyledRules = styled.span`
 const getSelected = (curr, list) => list.find(item => item.name === curr);
 
 const QuestionView = () => {
-    const [question, setQuestion] = useState(null);
     const [selectedList, setSelectedList] = useState([]);
+    const dispatch = useGameDispatch();
+    const { question } = useGameState();
 
     useEffect(() => {
-        setQuestion(getRandomApi(APIs))
-    }, [])
+        setSelectedList([])
+    }, [question])
 
-    if (!question) {
-        return null;
-    }
-
-    console.log(question);
+    // if (!question) {
+    //     return null;
+    // }
 
     return (
         <StyledQuestion>
+            <ScoreView/>
             <StyledHeading>
                 {question.name}
             </StyledHeading>
@@ -65,7 +70,12 @@ const QuestionView = () => {
                     return (
                         <StyledListItem
                             key={browser.name}
-                            onClick={() => setSelectedList(curr => [...curr, browser])}
+                            onClick={() => {
+                                setSelectedList(curr => [...curr, browser])
+                                if (getSelected(browser.name, question.supported).supportsLatest) {
+                                    dispatch({type: REDUCER_TYPES.UPDATE_SCORE})
+                                }
+                            }}
                             selected={isSelected !== undefined}
                             valid={isSelected && isSelected.supportsLatest}
                         >
@@ -76,6 +86,11 @@ const QuestionView = () => {
                     )
                 })}
             </StyledList>
+            <StyledNextButton
+                onClick={() => dispatch({type: REDUCER_TYPES.SET_QUESTION})}
+            >
+                NEXT
+            </StyledNextButton>
         </StyledQuestion>
     );
 };

@@ -36,8 +36,7 @@ const APIs = {
             supported: Object.keys(BROWSER_LIST).map(browser => {
                 return {
                     ...BROWSER_LIST[browser],
-                    supportedVersion: getLastVersionInObject(api.stats[browser]),
-                    supportsLatest: getLastVersionInObject(api.stats[browser]) <= BROWSER_LIST[browser].latestVersion
+                    supportsLatest: api.stats[browser][getLastVersionInObject(api.stats[browser])] === 'y'
                 }
             })
         }

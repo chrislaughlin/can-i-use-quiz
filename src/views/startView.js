@@ -6,6 +6,11 @@ import {
     StyledLink
 } from "../styles";
 
+import {
+    useGameDispatch,
+    REDUCER_TYPES
+} from "../context/gameContext";
+
 const StyledStart = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,11 +30,15 @@ const StyledStartButton = styled.button`
 `;
 
 const Start = () => {
+    const dispatch = useGameDispatch();
+
     return (
         <StyledStart>
             <StyledHeading>Can I Use - The Quiz</StyledHeading>
             <div>
-                <StyledStartButton>
+                <StyledStartButton
+                    onClick={() => dispatch({type: REDUCER_TYPES.START_GAME})}
+                >
                     START
                 </StyledStartButton>
             </div>

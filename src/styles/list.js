@@ -5,6 +5,8 @@ const StyledList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
+    margin: 0;
+    padding: 0;
 `;
 
 const success = css`

@@ -11,11 +11,15 @@ import {
     StyledList,
     StyledListItem
 } from "./list";
+import {
+    StyledNextButton
+} from "./nextbutton";
 
 export {
     StyledHeading,
     StyledHeading2,
     StyledLink,
     StyledList,
-    StyledListItem
+    StyledListItem,
+    StyledNextButton
 }

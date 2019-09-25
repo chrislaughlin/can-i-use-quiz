@@ -6,6 +6,7 @@ const StyledHeading = styled.h1`
     text-transform: uppercase;
     text-shadow: 2px 2px 2px ghostwhite;
     text-align: center;
+    word-break: break-all;
 `;
 
 export {
