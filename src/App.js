@@ -1,17 +1,14 @@
 import React from 'react';
 
 import Start from './views/startView';
-
-import { APIs, getRandomApi } from "./utils/dataUtils";
-
-console.log(APIs)
+import QuestionView from "./views/questionView";
 
 function App() {
-    console.log(getRandomApi(APIs));
 
     return (
         <div>
-            <Start/>
+            {/*<Start/>*/}
+            <QuestionView/>
         </div>
     );
 }
