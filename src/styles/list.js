@@ -1,12 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledList = styled.ul`
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    
-    li {
+    justify-content: center; 
+`;
+
+const success = css`
+    -webkit-box-shadow: 6px -2px 61px 34px rgba(43,240,12,0.74);
+    -moz-box-shadow: 6px -2px 61px 34px rgba(43,240,12,0.74);
+    box-shadow: 6px -2px 61px 34px rgba(43,240,12,0.74);
+`;
+
+const fail = css`
+    -webkit-box-shadow: 6px -2px 61px 34px rgba(255,0,0,1);
+    -moz-box-shadow: 6px -2px 61px 34px rgba(255,0,0,1);
+    box-shadow: 6px -2px 61px 34px rgba(255,0,0,1);
+`;
+
+const StyledListItem = styled.li`
+  span {
         margin: 20px;
         font-size: 20px;
         border: 1px solid ghostwhite;
@@ -20,9 +34,11 @@ const StyledList = styled.ul`
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        ${props => props.selected ? props.valid ? success : fail : ''}
     }
 `;
 
 export {
-    StyledList
+    StyledList,
+    StyledListItem
 }

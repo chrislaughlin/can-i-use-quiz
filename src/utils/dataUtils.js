@@ -23,7 +23,7 @@ const BROWSER_LIST = {
     }
 }
 
-const getLastVersionInObject = browser => Object.values(browser).slice(-1)[0];
+const getLastVersionInObject = browser => Object.keys(browser).slice(-1)[0];
 
 const apiList = Object.values(data.data);
 const APIs = {
@@ -37,7 +37,7 @@ const APIs = {
                 return {
                     ...BROWSER_LIST[browser],
                     supportedVersion: getLastVersionInObject(api.stats[browser]),
-                    supportsLatest: getLastVersionInObject(api.stats[browser]) === BROWSER_LIST[browser].latestVersion
+                    supportsLatest: getLastVersionInObject(api.stats[browser]) <= BROWSER_LIST[browser].latestVersion
                 }
             })
         }

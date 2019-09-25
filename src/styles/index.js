@@ -8,12 +8,14 @@ import {
     StyledLink
 } from "./a";
 import {
-    StyledList
+    StyledList,
+    StyledListItem
 } from "./list";
 
 export {
     StyledHeading,
     StyledHeading2,
     StyledLink,
-    StyledList
+    StyledList,
+    StyledListItem
 }
