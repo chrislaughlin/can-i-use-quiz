@@ -6,6 +6,8 @@ import {
 } from "../context/gameContext";
 
 const StyledScoreView = styled.div`
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0px;
     right: 20px;
@@ -16,11 +18,12 @@ const StyledScoreView = styled.div`
 `;
 
 const ScoreView = () => {
-    const { score } = useGameState();
+    const { score: { points, lives} } = useGameState();
 
     return (
         <StyledScoreView>
-            {score} points
+            <span>{points} points</span>
+            <span>{lives} lives</span>
         </StyledScoreView>
     );
 };

@@ -7,14 +7,18 @@ const GameDispatchContext = createContext();
 
 const DEFAULT_STATE = {
     started: false,
-    score: 0,
+    score: {
+        points: 0,
+        lives: 10
+    },
     question: getRandomApi(APIs)
 }
 
 const REDUCER_TYPES = {
     'START_GAME': 'startGame',
     'UPDATE_SCORE': 'updateScore',
-    'SET_QUESTION': 'setQuestion'
+    'SET_QUESTION': 'setQuestion',
+    'REMOVE_LIFE': 'removeLife'
 };
 
 const gameReducer = (state, action) => {
@@ -27,7 +31,18 @@ const gameReducer = (state, action) => {
         case REDUCER_TYPES.UPDATE_SCORE:
             return {
                 ...state,
-                score: state.score + 1,
+                score: {
+                    ...state.score,
+                    points: state.score.points + 10
+                },
+            };
+        case REDUCER_TYPES.REMOVE_LIFE:
+            return {
+                ...state,
+                score: {
+                    ...state.score,
+                    lives: state.score.lives - 1
+                },
             };
         case REDUCER_TYPES.SET_QUESTION:
             return {

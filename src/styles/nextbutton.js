@@ -8,6 +8,7 @@ const StyledNextButton = styled.button`
     font-size: 30px;
     color: ghostwhite;
     letter-spacing: 8px;
+    border-radius: 5px;
 `;
 
 export {
