@@ -14,6 +14,9 @@ import {
 import {
     StyledNextButton
 } from "./nextbutton";
+import {
+    StyledStartButton
+} from "./startButton";
 
 export {
     StyledHeading,
@@ -21,5 +24,6 @@ export {
     StyledLink,
     StyledList,
     StyledListItem,
-    StyledNextButton
+    StyledNextButton,
+    StyledStartButton
 }

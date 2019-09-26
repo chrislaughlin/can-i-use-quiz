@@ -59,7 +59,7 @@ const QuestionView = () => {
             </StyledLink>
             <h3>
                 <StyledRules>
-                    Select which browsers support this API on their latest version or if none go to the next API
+                    Select which browsers fully support this API on their latest version, if none then select next
                 </StyledRules>
             </h3>
             <StyledList>
