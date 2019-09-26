@@ -7,9 +7,32 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: #DB5601;
     color: ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+}
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    #root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+}
+
