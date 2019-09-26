@@ -11,6 +11,7 @@ import {
 } from "../styles";
 import ScoreView from "./scoreView";
 import {useGameDispatch, REDUCER_TYPES, useGameState} from "../context/gameContext";
+import Icon from "../components/icon";
 
 const StyledQuestion = styled.div`
     display: flex;
@@ -40,28 +41,26 @@ const QuestionView = () => {
         setSelectedList([])
     }, [question])
 
-    // if (!question) {
-    //     return null;
-    // }
-
     return (
         <StyledQuestion>
             <ScoreView/>
-            <StyledHeading>
+            <StyledHeading
+                noShadow
+            >
                 {question.name}
             </StyledHeading>
-            <StyledHeading2>
+            <h3>
                 {question.description}
-            </StyledHeading2>
+            </h3>
+            <StyledLink
+                link={question.link}
+            >
+                more details
+            </StyledLink>
             <h3>
                 <StyledRules>
-                    Select which browsers support this API on their latest version
+                    Select which browsers support this API on their latest version or if none go to the next API
                 </StyledRules>
-                <StyledLink
-                    link={question.link}
-                >
-                    more details
-                </StyledLink>
             </h3>
             <StyledList>
                 {question.supported.map(browser => {
@@ -74,14 +73,15 @@ const QuestionView = () => {
                                 setSelectedList(curr => [...curr, browser])
                                 if (getSelected(browser.name, question.supported).supportsLatest) {
                                     dispatch({type: REDUCER_TYPES.UPDATE_SCORE})
+                                } else {
+                                    dispatch({type: REDUCER_TYPES.REMOVE_LIFE})
                                 }
                             }}
-                            selected={isSelected !== undefined}
-                            valid={isSelected && isSelected.supportsLatest}
                         >
-                            <span>
-                                {browser.name}
-                            </span>
+                            <Icon
+                                icon={browser.code}
+                                color={isSelected ? isSelected.supportsLatest ? 'green' : 'red' : undefined}
+                            />
                         </StyledListItem>
                     )
                 })}

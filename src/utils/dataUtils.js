@@ -2,22 +2,27 @@ import data from '../caniusedata';
 
 const BROWSER_LIST = {
     'ie': {
+        code: 'internet-explorer',
         name: 'IE',
         latestVersion: 11
     },
     'edge': {
+        code: 'edge',
         name: 'Edge',
         latestVersion: 76
     },
     'firefox': {
+        code: 'firefox',
         name: 'Firefox',
         latestVersion: 71
     },
     'chrome': {
+        code: 'chrome',
         name: 'Chrome',
         latestVersion: 80
     },
     'safari': {
+        code: 'safari',
         name: 'Safari',
         latestVersion: 13.1
     }
