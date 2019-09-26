@@ -6,9 +6,20 @@ import {
     GameProvider,
     useGameState
 } from "./context/gameContext";
+import GameOverView from "./views/gameOverView";
 
 const AppContainer = () => {
-    const { started } = useGameState();
+    const {
+        started,
+        score: {
+            lives
+        }
+    } = useGameState();
+
+    if (lives === 0) {
+        return <GameOverView />
+    }
+
     if (started) {
         return <QuestionView/>;
     } else {

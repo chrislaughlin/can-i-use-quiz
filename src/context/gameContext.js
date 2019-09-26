@@ -25,7 +25,7 @@ const gameReducer = (state, action) => {
     switch (action.type) {
         case REDUCER_TYPES.START_GAME:
             return {
-                ...state,
+                ...DEFAULT_STATE,
                 started: true,
             };
         case REDUCER_TYPES.UPDATE_SCORE:

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
     StyledHeading,
-    StyledLink
+    StyledLink, StyledStartButton
 } from "../styles";
 
 import {
@@ -17,16 +17,6 @@ const StyledStart = styled.div`
   height: 100vh;
   justify-content: space-around;
   align-items: center;  
-`;
-
-const StyledStartButton = styled.button`
-    height: 70px;
-    width: 170px;
-    background: #3D3425;
-    border: none;
-    font-size: 30px;
-    color: ghostwhite;
-    letter-spacing: 8px;
 `;
 
 const Start = () => {
